@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aksi Hijau - Platform Restorasi Pesisir</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+        .gradient-main { background: linear-gradient(135deg, #059669 0%, #064e3b 100%); }
+        .hidden-page { display: none !important; }
+        .card-hover:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
+        /* Chat Styling */
+        #chat-window { transition: all 0.3s ease; }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 gradient-main rounded-xl flex items-center justify-center text-white font-bold text-xl"><i class="fas fa-leaf"></i></div>
+                <span class="text-xl font-extrabold tracking-tight">AksiHijau</span>
+            </div>
+            <div class="hidden md:flex items-center gap-8 font-medium text-slate-600">
+                <button onclick="navigate('landing')" class="hover:text-emerald-600">Beranda</button>
+                <button onclick="navigate('edukasi')" class="hover:text-emerald-600">Edukasi</button>
+                <button onclick="navigate('dashboard')" class="hover:text-emerald-600 font-bold text-emerald-600">Dashboard</button>
+            </div>
+            <div id="auth-nav">
+                <button id="btn-login-nav" onclick="navigate('login')" class="px-6 py-2.5 bg-slate-900 text-white rounded-full font-bold hover:bg-emerald-600 transition">Masuk</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-20 px-6">
+        <!-- Landing Section -->
+        <section id="page-landing" class="max-w-7xl mx-auto space-y-20">
+            <div class="text-center space-y-6">
+                <h1 class="text-6xl font-extrabold tracking-tight">Pulihkan Pesisir,<br><span class="text-emerald-600">Jaga Masa Depan.</span></h1>
+                <p class="text-xl text-slate-500 max-w-2xl mx-auto">Platform komunitas Tangerang Selatan untuk koordinasi penanaman mangrove dan edukasi lingkungan.</p>
+                <button onclick="navigate('edukasi')" class="px-10 py-4 bg-emerald-600 text-white rounded-2xl font-bold text-lg hover:bg-emerald-700 transition">Mulai Aksi Sekarang</button>
+            </div>
+
+            <!-- Stats -->
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
+                    <div class="text-4xl font-extrabold text-emerald-600">1.2k+</div>
+                    <div class="text-slate-500">Pohon Ditanam</div>
+                </div>
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
+                    <div class="text-4xl font-extrabold text-emerald-600">850</div>
+                    <div class="text-slate-500">Relawan Aktif</div>
+                </div>
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
+                    <div class="text-4xl font-extrabold text-emerald-600">Rp 45jt</div>
+                    <div class="text-slate-500">Dana Terkumpul</div>
+                </div>
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
+                    <div class="text-4xl font-extrabold text-emerald-600">12</div>
+                    <div class="text-slate-500">Proyek Aktif</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Edukasi Section -->
+        <section id="page-edukasi" class="hidden-page max-w-7xl mx-auto">
+            <h2 class="text-4xl font-extrabold mb-12">Pusat Edukasi</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white p-6 rounded-3xl border shadow-sm card-hover">
+                    <div class="bg-emerald-100 text-emerald-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 text-2xl"><i class="fas fa-tree"></i></div>
+                    <h3 class="text-xl font-bold mb-2">Manfaat Mangrove</h3>
+                    <p class="text-slate-500 text-sm mb-4">Mengapa ekosistem mangrove adalah garda depan abrasi pesisir kita...</p>
+                    <a href="#" class="text-emerald-600 font-bold">Baca Selengkapnya →</a>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-white p-6 rounded-3xl border shadow-sm card-hover">
+                    <div class="bg-blue-100 text-blue-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 text-2xl"><i class="fas fa-recycle"></i></div>
+                    <h3 class="text-xl font-bold mb-2">Manajemen Kompos</h3>
+                    <p class="text-slate-500 text-sm mb-4">Ubah sampah sisa dapur jadi pupuk organik untuk pekarangan rumah...</p>
+                    <a href="#" class="text-blue-600 font-bold">Baca Selengkapnya →</a>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-white p-6 rounded-3xl border shadow-sm card-hover">
+                    <div class="bg-orange-100 text-orange-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 text-2xl"><i class="fas fa-trash-alt"></i></div>
+                    <h3 class="text-xl font-bold mb-2">Bahaya Mikroplastik</h3>
+                    <p class="text-slate-500 text-sm mb-4">Dampak panjang sampah plastik bagi kesehatan ekosistem laut...</p>
+                    <a href="#" class="text-orange-600 font-bold">Baca Selengkapnya →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Login Section -->
+        <section id="page-login" class="hidden-page max-w-md mx-auto">
+            <div class="bg-white p-10 rounded-3xl shadow-xl border">
+                <h2 class="text-2xl font-extrabold mb-6">Masuk Member Area</h2>
+                <form id="login-form" onsubmit="handleLogin(event)" class="space-y-4">
+                    <input type="text" id="username" placeholder="Username (hanif)" class="w-full p-4 bg-slate-50 rounded-xl border focus:ring-2 ring-emerald-500 outline-none" required>
+                    <input type="password" id="password" placeholder="Password (hanif123)" class="w-full p-4 bg-slate-50 rounded-xl border focus:ring-2 ring-emerald-500 outline-none" required>
+                    <button type="submit" class="w-full py-4 bg-emerald-600 text-white rounded-xl font-bold hover:bg-emerald-700 transition">Login Sekarang</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Dashboard Section -->
+        <section id="page-dashboard" class="hidden-page max-w-5xl mx-auto">
+            <div class="bg-white p-8 rounded-3xl shadow-sm border mb-8 flex justify-between items-center">
+                <div>
+                    <h2 class="text-3xl font-extrabold">Halo, <span id="user-display">User</span>!</h2>
+                    <p class="text-slate-500">Selamat datang kembali di Aksi Hijau.</p>
+                </div>
+                <button onclick="logout()" class="px-6 py-2 bg-red-50 text-red-600 rounded-xl font-bold hover:bg-red-100">Logout</button>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-gradient-to-r from-emerald-600 to-emerald-800 text-white p-8 rounded-3xl">
+                    <p class="text-emerald-100">Kontribusi Pohon</p>
+                    <h3 class="text-4xl font-extrabold">24 Pohon</h3>
+                </div>
+                <div class="bg-white p-8 rounded-3xl border">
+                    <p class="text-slate-500">Poin Member</p>
+                    <h3 class="text-4xl font-extrabold">1,450 pts</h3>
+                </div>
+                <div class="bg-white p-8 rounded-3xl border">
+                    <p class="text-slate-500">Donasi Total</p>
+                    <h3 class="text-4xl font-extrabold">Rp 250rb</h3>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Chat Bot -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <button id="chat-toggle" onclick="toggleChat()" class="w-14 h-14 bg-emerald-600 rounded-full text-white shadow-2xl flex items-center justify-center text-xl hover:scale-110 transition">
+            <i class="fas fa-comment-dots"></i>
+        </button>
+        <div id="chat-window" class="hidden w-80 bg-white shadow-2xl rounded-3xl border p-6 mb-4">
+            <h4 class="font-bold mb-4">Aksi Hijau Assistant</h4>
+            <div class="h-40 bg-slate-50 rounded-xl mb-4 p-4 text-sm text-slate-600 overflow-y-auto">
+                Halo! Ada yang ingin ditanyakan tentang program mangrove atau cara komposting?
+            </div>
+            <div class="flex gap-2">
+                <input type="text" placeholder="Tanya sesuatu..." class="flex-1 p-2 bg-slate-100 rounded-lg outline-none text-sm">
+                <button class="bg-emerald-600 text-white px-4 rounded-lg"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const AppState = { isLoggedIn: false };
+
+        function navigate(page) {
+            // Proteksi Dashboard
+            if (page === 'dashboard' && !AppState.isLoggedIn) {
+                alert('Silakan login terlebih dahulu untuk mengakses dashboard!');
+                return navigate('login');
+            }
+
+            document.querySelectorAll('main > section').forEach(s => s.classList.add('hidden-page'));
+            document.getElementById(`page-${page}`).classList.remove('hidden-page');
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const u = document.getElementById('username').value;
+            const p = document.getElementById('password').value;
+
+            if (u === 'hanif' && p === 'hanif123') {
+                AppState.isLoggedIn = true;
+                document.getElementById('user-display').innerText = 'Hanif';
+                document.getElementById('btn-login-nav').innerText = 'Dashboard';
+                document.getElementById('btn-login-nav').onclick = () => navigate('dashboard');
+                navigate('dashboard');
+            } else {
+                alert('Username/Password salah!');
+            }
+        }
+
+        function logout() {
+            AppState.isLoggedIn = false;
+            document.getElementById('btn-login-nav').innerText = 'Masuk';
+            document.getElementById('btn-login-nav').onclick = () => navigate('login');
+            navigate('landing');
+        }
+
+        function toggleChat() {
+            const win = document.getElementById('chat-window');
+            win.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>
